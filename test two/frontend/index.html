@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartRecs Pro | نظام التوصيات الهجيني الذكي</title>
+    <meta name="description" content="نظام توصيات ذكي يستخدم الخوارزميات الجينية الهجينية مع التصفية التعاونية لتحسين توصيات التجارة الإلكترونية">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link id="themeStylesheet" rel="stylesheet" href="style_basic.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Header -->
+    <header id="app-header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-dna"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SmartRecs <span class="pro-badge">PRO</span></h1>
+                    <p class="tagline">الخوارزميات الجينية الهجينية + التصفية التعاونية</p>
+                </div>
+            </div>
+            <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
+                <div class="header-stats" id="headerStats">
+                    <div class="header-stat">
+                        <span class="stat-num" id="statUsers">—</span>
+                        <span class="stat-label">مستخدم</span>
+                    </div>
+                    <div class="header-stat">
+                        <span class="stat-num" id="statProducts">—</span>
+                        <span class="stat-label">منتج</span>
+                    </div>
+                    <div class="header-stat">
+                        <span class="stat-num" id="statRatings">—</span>
+                        <span class="stat-label">تقييم</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="gradient-text">تحسين التوصيات</span> بأساليب الذكاء التطوري
+                </h2>
+                <p class="hero-desc">
+                    نظام يحاكي الانتقاء الطبيعي لإيجاد أفضل مجموعة منتجات مُخصصة لكل مستخدم، 
+                    مع دمج التصفية التعاونية (Collaborative Filtering) لتحليل أنماط المستخدمين المتشابهين.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-chip"><i class="fa-solid fa-dna"></i> خوارزمية جينية هجينية</div>
+                    <div class="feature-chip"><i class="fa-solid fa-users"></i> تصفية تعاونية</div>
+                    <div class="feature-chip"><i class="fa-solid fa-chart-line"></i> طفرة تكيّفية</div>
+                    <div class="feature-chip"><i class="fa-solid fa-trophy"></i> انتقاء بالبطولة</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Selection -->
+        <section class="panel" id="userPanel">
+            <div class="panel-header">
+                <div class="panel-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                <h2>اختيار المستخدم</h2>
+            </div>
+            <div class="panel-body">
+                <div class="user-select-row">
+                    <div class="select-wrapper">
+                        <select id="userSelect">
+                            <option value="" disabled selected>جاري تحميل المستخدمين...</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+                    </div>
+                    <button id="generateBtn" class="btn-primary" disabled>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>توليد التوصيات</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Profile Dashboard -->
+        <section class="panel hidden" id="profilePanel">
+            <div class="panel-header">
+                <div class="panel-icon"><i class="fa-solid fa-id-card"></i></div>
+                <h2>ملف المستخدم التحليلي</h2>
+            </div>
+            <div class="panel-body">
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <div class="profile-avatar" id="profileAvatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">—</h3>
+                            <p id="profileMeta">—</p>
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fa-solid fa-eye"></i>
+                            <span class="stat-value" id="profileViews">0</span>
+                            <span class="stat-label">مشاهدة</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-mouse-pointer"></i>
+                            <span class="stat-value" id="profileClicks">0</span>
+                            <span class="stat-label">نقرة</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="stat-value" id="profilePurchases">0</span>
+                            <span class="stat-label">عملية شراء</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-tag"></i>
+                            <span class="stat-value" id="profileAvgPrice">0</span>
+                            <span class="stat-label">متوسط السعر</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prefs-section">
+                    <h4><i class="fa-solid fa-heart"></i> تفضيلات الفئات</h4>
+                    <div class="prefs-bars" id="prefsBars"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evolution Process -->
+        <section class="panel hidden" id="evolutionPanel">
+            <div class="panel-header">
+                <div class="panel-icon pulse"><i class="fa-solid fa-microscope"></i></div>
+                <h2>تطور الخوارزمية الجينية</h2>
+            </div>
+            <div class="panel-body">
+                <div class="evolution-info-row">
+                    <div class="evo-metric">
+                        <span class="evo-label">الجيل الحالي</span>
+                        <span class="evo-value" id="currentGen">0 / 20</span>
+                    </div>
+                    <div class="evo-metric">
+                        <span class="evo-label">أعلى ملاءمة</span>
+                        <span class="evo-value accent" id="bestFitness">0</span>
+                    </div>
+                    <div class="evo-metric">
+                        <span class="evo-label">متوسط الملاءمة</span>
+                        <span class="evo-value" id="avgFitness">0</span>
+                    </div>
+                    <div class="evo-metric">
+                        <span class="evo-label">نسبة الطفرة</span>
+                        <span class="evo-value" id="mutationRate">0.3</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="fitnessChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Recommendations -->
+        <section class="panel hidden" id="resultsPanel">
+            <div class="panel-header">
+                <div class="panel-icon"><i class="fa-solid fa-crown"></i></div>
+                <h2>أفضل التوصيات — الجيل النهائي</h2>
+            </div>
+            <div class="panel-body">
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="panel hidden" id="comparePanel">
+            <div class="panel-header">
+                <div class="panel-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h2>مقارنة: الخوارزمية الجينية مقابل التوصيات العشوائية</h2>
+            </div>
+            <div class="panel-body">
+                <div class="compare-summary" id="compareSummary">
+                    <div class="compare-badge">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        <span>تحسن بنسبة <strong id="improvementPct">0</strong>%</span>
+                    </div>
+                </div>
+                <div class="compare-grid">
+                    <div class="compare-col ga-col">
+                        <div class="compare-header">
+                            <i class="fa-solid fa-dna"></i>
+                            <h3>الخوارزمية الجينية</h3>
+                            <span class="compare-score" id="gaScore">0</span>
+                        </div>
+                        <div class="compare-products" id="gaProducts"></div>
+                    </div>
+                    <div class="compare-vs">VS</div>
+                    <div class="compare-col random-col">
+                        <div class="compare-header">
+                            <i class="fa-solid fa-shuffle"></i>
+                            <h3>عشوائي</h3>
+                            <span class="compare-score" id="randomScore">0</span>
+                        </div>
+                        <div class="compare-products" id="randomProducts"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GA Parameters Info -->
+        <section class="panel hidden" id="paramsPanel">
+            <div class="panel-header">
+                <div class="panel-icon"><i class="fa-solid fa-sliders"></i></div>
+                <h2>معلمات الخوارزمية المستخدمة</h2>
+            </div>
+            <div class="panel-body">
+                <div class="params-grid" id="paramsGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <footer>
+        <p>SmartRecs Pro — مشروع مادة الخوارزميات الذكية | الجامعة الافتراضية السورية © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

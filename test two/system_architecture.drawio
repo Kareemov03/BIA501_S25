@@ -1,0 +1,113 @@
+<mxfile version="21.1.2" type="device">
+  <diagram id="hybrid_ga_arch" name="Hybrid GA Architecture">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Client Layer Container -->
+        <mxCell id="client_layer" value="Client Layer (Frontend SPA)" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="560" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="spa" value="Single Page App&#10;(HTML / JS / CSS)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="client_layer">
+          <mxGeometry x="40" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chartjs" value="Visualization&#10;(Chart.js)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="client_layer">
+          <mxGeometry x="210" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="theme" value="Theme Engine&#10;(Basic / Premium)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="client_layer">
+          <mxGeometry x="380" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- API Layer Container -->
+        <mxCell id="api_layer" value="API Layer (FastAPI)" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="560" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fastapi" value="FastAPI Server&#10;(CORS, Static Files)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="api_layer">
+          <mxGeometry x="40" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="endpoints" value="REST Endpoints&#10;(/recommend, /users, /stats, /compare)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="api_layer">
+          <mxGeometry x="210" y="40" width="310" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Application Logic Layer Container -->
+        <mxCell id="app_layer" value="Application Logic (Hybrid Engine)" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="560" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="user_pref" value="User Preference&#10;Analyzer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="app_layer">
+          <mxGeometry x="40" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_engine" value="Collaborative Filtering&#10;(Cosine Similarity)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="app_layer">
+          <mxGeometry x="210" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga_engine" value="Hybrid Genetic Algorithm&#10;(Adaptive Mutation,&#10;Multi-Obj Fitness)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="app_layer">
+          <mxGeometry x="380" y="40" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="baseline" value="Random Baseline&#10;(Comparator)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="app_layer">
+          <mxGeometry x="120" y="110" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Precomputation & Data Models -->
+        <mxCell id="data_model" value="Data Processing &amp; Precomputation" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="580" width="560" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="rating_matrix" value="User-Product&#10;Rating Matrix (Sparse)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="data_model">
+          <mxGeometry x="100" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pop_scores" value="Global Popularity&#10;Scores" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="data_model">
+          <mxGeometry x="320" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Storage Layer -->
+        <mxCell id="storage_layer" value="Storage Layer (Data Files)" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="740" width="560" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="excel_files" value="Excel Datasets&#10;(users, products,&#10;ratings, behavior)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="storage_layer">
+          <mxGeometry x="210" y="30" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edges between Client and API -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="spa" target="fastapi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="spa" target="endpoints">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Edges between API and App Logic -->
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="endpoints" target="user_pref">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="endpoints" target="cf_engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="endpoints" target="ga_engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Edges between App Logic and Data Model -->
+        <mxCell id="edge6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user_pref" target="rating_matrix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="cf_engine" target="rating_matrix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ga_engine" target="rating_matrix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ga_engine" target="pop_scores">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Edges between Data Model and Storage -->
+        <mxCell id="edge10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="rating_matrix" target="excel_files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="pop_scores" target="excel_files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
